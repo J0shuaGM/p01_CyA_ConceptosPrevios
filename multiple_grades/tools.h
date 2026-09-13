@@ -14,9 +14,15 @@
 #define TOOLS_H
 
 #include <iostream>
+#include <fstream>
+#include <map>
+#include <string>
+#include <set>
 
 void Usage(int argc, char *argv[]);
-void UnicaNota(); 
-void MultiplesNotas();
+std::map<std::string, std::set<double>> MultipleGrades(const std::string& nombre);
+void Insert(std::map<std::string, std::set<double>>& listado, const std::string& alu, const double nota);
+bool ComprobarDatos(const std::string& alu, const double nota);
+void PrintMap(const std::map<std::string, std::set<double>>& listado);
 
 #endif

@@ -10,17 +10,17 @@
 # Archivo Makefile
 
 # Nombre del archivo de salida
-TARGET = single
+TARGET = multiple
 
 # Lista de archivos fuente(.cc)
-SOURCES = main.cc 
+SOURCES = cliente.cc tools.cc
 
 # Dependencias de los archivos fuente 
-DEPENDENCIES =  
+DEPENDENCIES = tools.h
 
 # Opciones de compilación
 CXX = g++
-CXXFLAGS = -std=c++11
+CXXFLAGS = -std=c++17
 
 # Regla para compilar el programa
 $(TARGET): $(SOURCES) $(DEPENDENCIES)
