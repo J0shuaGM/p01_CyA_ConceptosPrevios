@@ -15,6 +15,8 @@
 
 #include "tools.h"
 
+
+
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
   std::string nombre_fichero = argv[1];

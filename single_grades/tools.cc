@@ -7,7 +7,7 @@
 // Autor: Joshua Gomez Marrero
 // Correo: alu0101477398@ull.edu.es
 // Fecha: 12/09/2026
-// Archivo tools.h: contiene las definiciones de las clases declaradas en tools.h
+// Archivo tools.cc: contiene las definiciones de las clases declaradas en tools.h
 
 #include <cctype>
 #include <cstdlib>
@@ -44,6 +44,14 @@ void Usage(int argc, char* argv[]) {
   }
 }
 
+
+
+
+/**
+ * @brief Funcion encargada de leer el fichero y almacenar los datos
+ * @param nombre cadena que contiene el nombre del fichero a leer
+ * @return Se devuelve un map con todos los datos ya introducidos
+*/
 std::map<std::string, double> SingleGrades(const std::string& nombre) {
   std::ifstream fichero_entrada(nombre);
   if (!fichero_entrada.is_open()) {
@@ -71,6 +79,14 @@ std::map<std::string, double> SingleGrades(const std::string& nombre) {
   return listado;
 }
 
+
+
+/**
+ * @brief Funcion encargada de insertar nuevos datos en el listado
+ * @param listado map que contiene los datos almacenados
+ * @param alu cadena que contiene el alu del alumno
+ * @param nota nota numerica del alumno
+*/
 void Insert(std::map<std::string, double>& listado, const std::string& alu, const double nota) {
   if (ComprobarDatos(alu, nota)) {
     auto it = listado.find(alu);
@@ -84,6 +100,13 @@ void Insert(std::map<std::string, double>& listado, const std::string& alu, cons
   }
 }
 
+
+
+/**
+ * @brief Funcion encargada de comprobar que los datos a almacenar son correctos sgun su formato o valor
+ * @param alu cadena que contiene el alu del alumno
+ * @param nota nota numerica del alumno
+*/
 bool ComprobarDatos(const std::string& alu, const double nota) {
   if (alu.size() != 13 || alu.substr(0, 3) != "alu") {
     std::cerr << "El alu introducido no es correcto" << std::endl;
@@ -103,6 +126,12 @@ bool ComprobarDatos(const std::string& alu, const double nota) {
   return true;
 }
 
+
+
+/**
+ * @brief Funcion encargada de imprimir por pantalla los datos del map
+ * @param listado map que contiene los datos almacenados
+*/
 void PrintMap(const std::map<std::string, double>& listado) {
   for (const auto& [alumno, nota] : listado) {
     std::cout << alumno << " " << nota << std::endl;
