@@ -18,7 +18,7 @@
 int main(int argc, char* argv[]) {
   Usage(argc, argv);
   std::string nombre_fichero = argv[1];
-  std::map<std::string, std::set<double>> listado = MultipleGrades(nombre_fichero);
+  std::map<std::string, std::vector<double>> listado = MultipleGrades(nombre_fichero);
   PrintMap(listado);
   int opcion; 
   std::cout << "¿Desea introducir mas alumnos? 1 = SI/2 = NO: " << std::endl;

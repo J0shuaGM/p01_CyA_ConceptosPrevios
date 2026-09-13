@@ -16,6 +16,7 @@
 #include <map>
 #include <string>
 #include <set>
+#include <vector>
 
 #include "tools.h"
 
@@ -45,7 +46,7 @@ void Usage(int argc, char* argv[]) {
   }
 }
 
-std::map<std::string, std::set<double>> MultipleGrades(const std::string& nombre) {
+std::map<std::string, std::vector<double>> MultipleGrades(const std::string& nombre) {
   std::ifstream fichero_entrada(nombre);
   if (!fichero_entrada.is_open()) {
     std::cerr << "El fichero de entrada no se ha podido abrir" << std::endl;
@@ -54,19 +55,19 @@ std::map<std::string, std::set<double>> MultipleGrades(const std::string& nombre
 
   std::string alu;
   double nota;
-  std::map<std::string, std::set<double>> listado;
+  std::map<std::string, std::vector<double>> listado;
 
   while (fichero_entrada >> alu >> nota) {
     if (ComprobarDatos(alu, nota)) {
-      listado[alu].insert(nota);
+      listado[alu].push_back(nota);
     }
   }
   return listado;
 }
 
-void Insert(std::map<std::string, std::set<double>>& listado, const std::string& alu, const double nota) {
+void Insert(std::map<std::string, std::vector<double>>& listado, const std::string& alu, const double nota) {
   if (ComprobarDatos(alu, nota)) {
-    listado[alu].insert(nota);
+    listado[alu].push_back(nota);
   }
 }
 
@@ -89,7 +90,7 @@ bool ComprobarDatos(const std::string& alu, const double nota) {
   return true;
 }
 
-void PrintMap(const std::map<std::string, std::set<double>>& listado) {
+void PrintMap(const std::map<std::string, std::vector<double>>& listado) {
   for (const auto& [alumno, notas] : listado) {
     std::cout << alumno << " ";
     for(auto nota : notas) {

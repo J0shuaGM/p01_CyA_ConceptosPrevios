@@ -18,11 +18,12 @@
 #include <map>
 #include <string>
 #include <set>
+#include <vector>
 
 void Usage(int argc, char *argv[]);
-std::map<std::string, std::set<double>> MultipleGrades(const std::string& nombre);
-void Insert(std::map<std::string, std::set<double>>& listado, const std::string& alu, const double nota);
+std::map<std::string, std::vector<double>> MultipleGrades(const std::string& nombre);
+void Insert(std::map<std::string, std::vector<double>>& listado, const std::string& alu, const double nota);
 bool ComprobarDatos(const std::string& alu, const double nota);
-void PrintMap(const std::map<std::string, std::set<double>>& listado);
+void PrintMap(const std::map<std::string, std::vector<double>>& listado);
 
 #endif
